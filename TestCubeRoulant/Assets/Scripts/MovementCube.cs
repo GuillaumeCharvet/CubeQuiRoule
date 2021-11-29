@@ -14,12 +14,16 @@ public class MovementCube : MonoBehaviour
 
     void Update()
     {
+
+        if (true)
+        {
+
+        }
+
         //RotateAroundVerticalAxe();
         if (Input.GetAxis("Vertical")>0.1f)
         {
             RotateAroundHorizontalAxe(1,0);
-            auxi.eulerAngles = Vector3.Scale(trsf.rotation.eulerAngles, new Vector3 (1, 0, 1));
-            trsf.rotation = auxi;
         }
         else if (Input.GetAxis("Vertical")<-0.1f)
         {
@@ -27,17 +31,19 @@ public class MovementCube : MonoBehaviour
         }
         else if (Input.GetAxis("Horizontal")>0.1f)
         {
-            RotateAroundHorizontalAxe(0,1);
+            RotateAroundHorizontalAxe(0,-1);
         }
         else if (Input.GetAxis("Horizontal")<-0.1f)
         {
-            RotateAroundHorizontalAxe(0,-1);
+            RotateAroundHorizontalAxe(0,1);
         }
 
-        
+
+        /*auxi.eulerAngles = Vector3.Scale(trsf.rotation.eulerAngles, new Vector3(1, 0, 1));
+        trsf.rotation = auxi;*/
     }
 
-    private void RotateAroundHorizontalAxe(float input_vertical, float input_horizontal)
+    private void RotateAroundHorizontalAxe(float input_vertical, float input_horizontal) //Vector3 main_direction, 
     {
         rgbd.AddTorque(trsf_cam.right * torque * input_vertical);
         rgbd.AddTorque(trsf_cam.forward * torque * input_horizontal);
