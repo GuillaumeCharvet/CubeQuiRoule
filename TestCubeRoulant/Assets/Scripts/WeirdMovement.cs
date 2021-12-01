@@ -33,8 +33,10 @@ public class WeirdMovement : MonoBehaviour
 
     private void RotateAroundVerticalAxe(float input_vertical, float input_horizontal)
     {
-        print("input_vertical"); print(input_vertical);
-        var Vector3 avance = Vector3.forward ;
+
+        print("input_vertical");
+        print(input_vertical);
+        Vector3 avance = Vector3.forward;
         //Vector3 avance = (Mathf.Sin(rotation_speed * input_vertical) * trsf.forward + (1 - Mathf.Cos(rotation_speed * input_vertical)) * -1 * trsf.right) * rayon_rotation; //input_horizontal * 
         trsf.position += avance;
         trsf.Rotate(0.0f,rotation_speed,0.0f,Space.Self);

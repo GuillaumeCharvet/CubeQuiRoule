@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     public float speed = 0.01f;
     public Transform raycastOrigin;
 
+    [Range(0f, 10f)]
+    public float alea = 2f;
+
     void Update()
     {
     }
@@ -23,4 +26,8 @@ public class Movement : MonoBehaviour
         return isGrounded;
     }
 
+    public void GrosseBaffe(Rigidbody rgbd)
+    {
+        rgbd.AddForce((Vector3.up + new Vector3(Random.Range(-alea, alea), 0, Random.Range(-alea, alea))) * speed);
+    }
 }

@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 
     public KeyCode up, down, left, right, espace;
     public Movement movement;
+    public SpawnThings spawn;
     public Rigidbody rgbd1;
     public Rigidbody rgbd2;
     public Rigidbody rgbd3;
@@ -14,8 +15,6 @@ public class InputManager : MonoBehaviour
 
     [Range(0f, 10f)]
     public float speed = 0.01f;
-    [Range(0f, 10f)]
-    public float alea = 2f;
 
     void Update()
     {
@@ -37,12 +36,15 @@ public class InputManager : MonoBehaviour
         }
         if (Input.GetKey(espace) && movement.Jump())
         {
-            rgbd1.AddForce((Vector3.up + new Vector3(Random.Range(-alea, alea), 0, Random.Range(-alea, alea))) * speed);
-            rgbd2.AddForce((Vector3.up + new Vector3(Random.Range(-alea, alea), 0, Random.Range(-alea, alea))) * speed);
-            rgbd3.AddForce((Vector3.up + new Vector3(Random.Range(-alea, alea), 0, Random.Range(-alea, alea))) * speed);
-            rgbd4.AddForce((Vector3.up + new Vector3(Random.Range(-alea, alea), 0, Random.Range(-alea, alea))) * speed);
+            movement.GrosseBaffe(rgbd1);
+            movement.GrosseBaffe(rgbd2);
+            movement.GrosseBaffe(rgbd3);
+            movement.GrosseBaffe(rgbd4);
         }
-    }
+        if (Input.GetKey(espace))
+        {
+            //spawn.AziSpawn();
+        }
 
-    
+    }
 }
